@@ -17,6 +17,14 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".InfoMenu">
+        </activity>
+
+        <activity android:name=".ResultMenu">
+        </activity>
+
+        <activity android:name=".LogMenu">
+        </activity>
     </application>
 
 </manifest>

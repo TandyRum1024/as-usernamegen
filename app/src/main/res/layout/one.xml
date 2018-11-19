@@ -65,6 +65,7 @@
             android:layout_height="150dp"
             android:text="시작하기"
             android:textSize="50dp"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp"
+            android:id="@+id/btnMainBegin"/>
     </LinearLayout>
 </LinearLayout>
