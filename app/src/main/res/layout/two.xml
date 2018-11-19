@@ -24,7 +24,8 @@
             android:layout_height="wrap_content"
             android:datePickerMode="spinner"
             android:calendarViewShown="false"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:id="@+id/datePicker">
 
         </DatePicker>
         <LinearLayout
@@ -35,7 +36,8 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="랜덤생성"/>
+                android:text="랜덤생성"
+                android:id="@+id/btnMakeRandom"/>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
@@ -49,7 +51,8 @@
             android:layout_height="150dp"
             android:text="생성하기"
             android:textSize="50dp"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp"
+            android:id="@+id/btnMake"/>
     </LinearLayout>
 
 </LinearLayout>
