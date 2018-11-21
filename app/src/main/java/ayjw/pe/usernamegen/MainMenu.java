@@ -39,5 +39,6 @@ public class MainMenu extends AppCompatActivity
         Intent intent = new Intent(this, InfoMenu.class);
 
         startActivity(intent);
+        finish();
     }
 }

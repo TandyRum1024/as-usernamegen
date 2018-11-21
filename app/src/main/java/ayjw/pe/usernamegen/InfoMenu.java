@@ -1,6 +1,7 @@
 package ayjw.pe.usernamegen;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -48,8 +49,21 @@ public class InfoMenu extends AppCompatActivity
         btnMake.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                btnMake.setText("DATE : " + currentY + "/" + currentM + "/" + currentD);
+                gotoHell();
             }
         });
+    }
+
+    void gotoHell ()
+    {
+        Intent intent = new Intent(getBaseContext(), ResultMenu.class);
+
+        // Send value
+        intent.putExtra("IN_Y", currentY);
+        intent.putExtra("IN_M", currentM);
+        intent.putExtra("IN_D", currentD);
+
+        startActivity(intent);
+        finish();
     }
 }
