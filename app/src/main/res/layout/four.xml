@@ -12,51 +12,19 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_weight="2">
-        <!--<ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            사랑해 유빈아
-        </ListView>-->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="안유빈팬티소환사"
-            android:textSize="40dp" />
-        <TextView
+            android:textSize="32dp"
+            android:text="당신의 닉네임 : "
+            android:id="@+id/tvLogCurrent"/>
+
+        <ListView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="안유빈팬티소환사"
-            android:textSize="40dp" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="안유빈팬티소환사"
-            android:textSize="40dp" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="안유빈팬티소환사"
-            android:textSize="40dp" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="안유빈팬티소환사"
-            android:textSize="40dp" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="안유빈팬티소환사"
-            android:textSize="40dp" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="안유빈팬티소환사"
-            android:textSize="40dp" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="안유빈팬티소환사"
-            android:textSize="40dp" />
+            android:layout_height="match_parent"
+            android:id="@+id/lvNamesLog">
+            <!--사랑해, 종원아.-->
+        </ListView>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -67,13 +35,15 @@
             android:layout_height="match_parent"
             android:text="삭제하기"
             android:textSize="25dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:id="@+id/btnLogDelete"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="돌아가기"
             android:textSize="25dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:id="@+id/btnLogReturn"/>
     </LinearLayout>
 
 </LinearLayout>

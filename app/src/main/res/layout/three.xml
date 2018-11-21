@@ -32,11 +32,6 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="70dp"
                 android:id="@+id/tvResult"/>
-            <ListView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/lv">
-            </ListView>
         </LinearLayout>
 
         <LinearLayout
@@ -55,7 +50,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="저장하기"
-                    android:textSize="25dp" />
+                    android:textSize="25dp"
+                    android:id="@+id/btnResultSave"/>
             </LinearLayout>
 
             <LinearLayout
@@ -67,7 +63,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="목록보기"
-                    android:textSize="25dp" />
+                    android:textSize="25dp"
+                    android:id="@+id/btnResultLog"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -82,7 +79,8 @@
             android:layout_height="150dp"
             android:text="다시하기"
             android:textSize="50dp"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp"
+            android:id="@+id/btnResultReset"/>
     </LinearLayout>
 
 </LinearLayout>

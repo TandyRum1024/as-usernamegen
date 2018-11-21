@@ -22,7 +22,6 @@ public class MainMenu extends AppCompatActivity
         setContentView(R.layout.one);
 
         btnBegin = findViewById(R.id.btnMainBegin);
-
         btnBegin.setOnClickListener(new View.OnClickListener()
         {
             @Override

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,11 +25,13 @@ import java.util.ArrayList;
 
 public class ResultMenu extends AppCompatActivity {
     int inputY, inputM, inputD;
-    TextView tvResult;
-    ListView lv;
-    ArrayAdapter<String> ad;
-
+    String resultName;
     ArrayList<String> nameY, nameM, nameD;
+    Button btnReset, btnSave, btnLog;
+
+    //    ArrayAdapter<String> ad;
+//    ListView lv;
+    TextView tvResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -44,24 +47,64 @@ public class ResultMenu extends AppCompatActivity {
 
         // Setup link
         tvResult = findViewById(R.id.tvResult);
-        lv = findViewById(R.id.lv);
+        btnSave = findViewById(R.id.btnResultSave);
+        btnLog = findViewById(R.id.btnResultLog);
+        btnReset = findViewById(R.id.btnResultReset);
+//        lv = findViewById(R.id.lv);
+
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gotoHell(resultName);
+            }
+        });
+
+        btnLog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gotoHell(null);
+            }
+        });
+
+        btnReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gotoStart();
+            }
+        });
 
         nameY = new ArrayList<String>();
         nameM = new ArrayList<String>();
         nameD = new ArrayList<String>();
-        ad = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, nameY);
-        lv.setAdapter(ad);
-
-        // Set debug value
-        // tvResult.setText(inputY + "/" + inputM inputD);
+//        ad = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, nameY);
+//        lv.setAdapter(ad);
 
         // Get name list
-        getNamePool(nameY, R.raw.pool_year, ad);
+        getNamePool(nameY, R.raw.pool_year, null);
         getNamePool(nameM, R.raw.pool_month, null);
         getNamePool(nameD, R.raw.pool_day, null);
 
         // Update name
-        tvResult.setText(genName(inputY, inputM, inputD));
+        resultName = genName(inputY, inputM, inputD);
+        tvResult.setText(resultName);
+    }
+
+    void gotoHell (String name)
+    {
+        Intent intent = new Intent(getBaseContext(), LogMenu.class);
+
+        // Send value
+        intent.putExtra("IN_RESULT", resultName);
+
+        startActivity(intent);
+    }
+
+    void gotoStart ()
+    {
+        Intent intent = new Intent(getBaseContext(), InfoMenu.class);
+
+        startActivity(intent);
+        finish();
     }
 
     String genName (int Y, int M, int D)
