@@ -13,12 +13,18 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
+import java.util.Random;
+
 /**
  * Created by user on 2018-11-19.
  */
 
 public class InfoMenu extends AppCompatActivity
 {
+    static int MAX_YEAR = 100;
+    static int MAX_MONTH = 12;
+    static int MAX_DAY = 31;
+
     DatePicker dp;
     Button btnMake, btnRandom;
     static int currentY, currentM, currentD;
@@ -49,6 +55,20 @@ public class InfoMenu extends AppCompatActivity
         btnMake.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                gotoHell();
+            }
+        });
+
+        btnRandom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Make random
+                Random rd = new Random();
+
+                currentY = MAX_YEAR;
+                currentM = MAX_MONTH;
+                currentD = MAX_DAY;
+
                 gotoHell();
             }
         });
