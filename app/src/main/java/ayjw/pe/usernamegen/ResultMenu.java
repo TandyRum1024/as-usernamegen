@@ -94,7 +94,7 @@ public class ResultMenu extends AppCompatActivity {
         Intent intent = new Intent(getBaseContext(), LogMenu.class);
 
         // Send value
-        intent.putExtra("IN_RESULT", resultName);
+        intent.putExtra("IN_RESULT", name);
 
         startActivity(intent);
     }

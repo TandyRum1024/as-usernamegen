@@ -1,9 +1,11 @@
 package ayjw.pe.usernamegen;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.GetChars;
 import android.view.View;
@@ -55,7 +57,11 @@ public class LogMenu extends AppCompatActivity {
         sdDir = Environment.getExternalStorageDirectory().getAbsolutePath();
         sdDir += "/nameGen/";//내 어플의 디렉토리 이름 설정
         logPath = new File(sdDir);
-        if(!logPath.isDirectory()) logPath.mkdir();
+        if(!logPath.isDirectory())
+        {
+            logPath.mkdir();
+            Toast.makeText(getApplicationContext(), "DIR : " + logPath.getAbsolutePath().toString(), Toast.LENGTH_SHORT);
+        }
 
         nameList = new ArrayList<String>();
         ad = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, nameList);
@@ -127,7 +133,7 @@ public class LogMenu extends AppCompatActivity {
 
         try
         {
-            BufferedWriter out = new BufferedWriter(new FileWriter("log.txt"));
+            BufferedWriter out = new BufferedWriter(new FileWriter(logPath.getAbsolutePath() + "/log.txt"));
 
             if (list  != null)
             {
@@ -136,11 +142,14 @@ public class LogMenu extends AppCompatActivity {
                     out.write(list.get(i));
                     out.newLine();
                 }
+
+                Toast.makeText(getApplicationContext(), "기록 저장 성공!", Toast.LENGTH_SHORT).show();
             }
+            out.close();
         }
         catch (IOException e)
         {
-            Toast.makeText(getApplicationContext(), "에러 : 기록 쓰는 중 에러!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "에러 : 기록 쓰는 중 에러! " + e.toString(), Toast.LENGTH_LONG).show();
             e.printStackTrace();
         }
     }
