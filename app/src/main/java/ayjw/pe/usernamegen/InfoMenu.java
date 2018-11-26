@@ -56,7 +56,7 @@ public class InfoMenu extends AppCompatActivity
             @Override
             public void onDateChanged(DatePicker datePicker, int Y, int M, int D) {
                 currentY = getLastYear(Y);
-                currentM = M - 1;
+                currentM = M;
                 currentD = D - 1;
             }
         });
@@ -76,9 +76,9 @@ public class InfoMenu extends AppCompatActivity
                 // Make random
                 Random rd = new Random();
 
-                currentY = MAX_YEAR - 1;
-                currentM = MAX_MONTH - 1;
-                currentD = MAX_DAY - 1;
+                currentY = rd.nextInt(MAX_YEAR);
+                currentM = rd.nextInt(MAX_MONTH);
+                currentD = rd.nextInt(MAX_DAY);
 
                 gotoHell();
             }
