@@ -85,8 +85,10 @@ public class ResultMenu extends AppCompatActivity {
         getNamePool(nameD, R.raw.pool_day, null);
 
         // Update name
-        resultName = genName(inputY, inputM, inputD);
-        tvResult.setText(resultName);
+        // resultName = genName(inputY, inputM, inputD);
+//        tvResult.setText(resultName);
+
+        tvResult.setText("SIZE : " + nameY.size() + "/" + nameM.size() + "/" + nameD.size());
     }
 
     void gotoHell (String name)

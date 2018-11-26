@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
+import java.util.Calendar;
 import java.util.Random;
 
 /**
@@ -43,14 +44,24 @@ public class InfoMenu extends AppCompatActivity
         btnMake = findViewById(R.id.btnMake);
         btnRandom = findViewById(R.id.btnMakeRandom);
 
-        dp.init(dp.getYear(), dp.getMonth(), dp.getDayOfMonth(), new DatePicker.OnDateChangedListener() {
+        Calendar calendar = Calendar.getInstance();
+
+        int ynow = calendar.get(Calendar.YEAR), mnow = calendar.get(Calendar.MONTH), dnow = calendar.get(Calendar.DAY_OF_MONTH);
+
+        currentY = getLastYear(ynow);
+        currentM = mnow - 1;
+        currentD = dnow - 1;
+
+        dp.init(ynow, mnow, dnow, new DatePicker.OnDateChangedListener() {
             @Override
             public void onDateChanged(DatePicker datePicker, int Y, int M, int D) {
                 currentY = getLastYear(Y);
-                currentM = M;
+                currentM = M - 1;
                 currentD = D - 1;
             }
         });
+
+
 
         btnMake.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,9 +76,9 @@ public class InfoMenu extends AppCompatActivity
                 // Make random
                 Random rd = new Random();
 
-                currentY = MAX_YEAR;
-                currentM = MAX_MONTH;
-                currentD = MAX_DAY;
+                currentY = MAX_YEAR - 1;
+                currentM = MAX_MONTH - 1;
+                currentD = MAX_DAY - 1;
 
                 gotoHell();
             }
