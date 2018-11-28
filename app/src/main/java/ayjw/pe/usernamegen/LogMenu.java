@@ -9,6 +9,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.GetChars;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -32,6 +33,8 @@ import java.util.List;
  */
 
 public class LogMenu extends AppCompatActivity {
+    int selectedItem;
+
     TextView tvCurrent;
     Button btnReturn, btnDelete;
     String currentName;
@@ -47,11 +50,15 @@ public class LogMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.four);
 
+        selectedItem = -1;
+
         // Link
         tvCurrent = findViewById(R.id.tvLogCurrent);
         btnReturn = findViewById(R.id.btnLogReturn);
         btnDelete = findViewById(R.id.btnLogDelete);
         lvLog = findViewById(R.id.lvNamesLog);
+
+        btnDelete.setEnabled(false);
 
         //sdcard
         sdDir = Environment.getExternalStorageDirectory().getAbsolutePath();
@@ -74,6 +81,31 @@ public class LogMenu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 returnPlz();
+            }
+        });
+
+        lvLog.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedItem = i;
+
+                Toast.makeText(getApplicationContext(), nameList.get(i).toString() + " 선택함!", Toast.LENGTH_SHORT).show();
+                btnDelete.setEnabled(true);
+            }
+        });
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (selectedItem != -1)
+                {
+                    Toast.makeText(getApplicationContext(), nameList.get(selectedItem).toString() + " 삭제함!", Toast.LENGTH_SHORT).show();
+
+                    nameList.remove(selectedItem);
+                    ad.notifyDataSetChanged();
+
+                    saveLog(nameList);
+                }
             }
         });
 
